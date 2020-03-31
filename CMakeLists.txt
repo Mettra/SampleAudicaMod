@@ -8,14 +8,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(${ModName} SHARED 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/SampleMod.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/../shared/il2cpp/il2cpp_context.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/../shared/il2cpp/il2cpp_binding.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared/il2cpp/il2cpp_context.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared/il2cpp/il2cpp_binding.cpp
 )
 
 include(GenerateExportHeader)
 generate_export_header(${ModName})
 
-target_include_directories(${ModName} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../shared")
+target_include_directories(${ModName} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/shared")
 
 set_target_properties(${ModName} PROPERTIES
     IMPORTED_IMPLIB "${CMAKE_CURRENT_BINARY_DIR}/${ModName}.lib"

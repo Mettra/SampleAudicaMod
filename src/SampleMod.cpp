@@ -77,7 +77,7 @@ extern "C" __declspec(dllexport) void registerHooks(il2cpp_binding &bindingCtx) 
 		auto rigidBodyClass = ctx.getGlobalContext().getClass("UnityEngine", "Rigidbody");
 
 		for (auto &&[gunPtr, data] : gunData) {
-			il2cppapi::Object gun(gunPtr, gunClass);
+			il2cppapi::Object gun(internal::Il2CppObject{ gunPtr }, gunClass);
 
 			int32_t newState = GetCurrentTrick(gun);
 
@@ -95,7 +95,7 @@ extern "C" __declspec(dllexport) void registerHooks(il2cpp_binding &bindingCtx) 
 			if (data.returnPoint) {
 				auto diff = std::chrono::high_resolution_clock::now() - data.returnPoint.value();
 				const std::chrono::duration<double, std::milli> dtMs = diff;
-				double dt = dtMs.count();
+				float dt = (float)dtMs.count();
 				dt /= 1000.0f;
 
 				//We do a lerp over 0.1s, so that the gun snaps back much faster than normal
