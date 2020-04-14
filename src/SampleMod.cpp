@@ -36,6 +36,13 @@ struct CustomGunData {
 };
 std::unordered_map<void *, CustomGunData> gunData;
 
+extern "C" __declspec(dllexport) ModDeclaration getModInfo() {
+	ModDeclaration decl;
+	decl.bindingVersion = BindingVersion;
+	decl.modName = "Sample Mod";
+	return decl;
+}
+
 
 extern "C" __declspec(dllexport) void registerHooks(il2cpp_binding &bindingCtx) {
 
